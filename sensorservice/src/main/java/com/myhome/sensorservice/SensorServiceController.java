@@ -1,22 +1,19 @@
 package com.myhome.sensorservice;
 
-import com.myhome.sensorservice.proxy.TempServiceProxy;
+import com.myhome.sensorservice.proxy.TemperatureServiceProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 @RestController
 public class SensorServiceController {
 
     @Autowired
-    private TempServiceProxy tempServiceProxy;
+    private TemperatureServiceProxy temperatureServiceProxy;
 
     @GetMapping(path = "/getTemperatureForToday")
     public int getTemperature() {
-        return tempServiceProxy.getTemperature(System.currentTimeMillis());
+        return temperatureServiceProxy.getTemperature(System.currentTimeMillis());
     }
 
 }
