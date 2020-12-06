@@ -1,27 +1,50 @@
 version: "3.8"
 services:
   discovery:
+    image: discovery-server:latest
     hostname: discovery-server
     container_name: discovery-server
     build:
       context: discoveryserver/
       dockerfile: Dockerfile
-    image: discovery-server:latest
     ports:
       - "8761:8761"
     networks:
       - sensor-cloud
   sensorservice:
+    image: sensor-service:latest
     hostname: sensor-service
     container_name: sensor-service
     build:
       context: sensorservice/
       dockerfile: Dockerfile
-    image: sensor-service:latest
     ports:
       - "8200:8200"
     networks:
       - sensor-cloud
+  temperatureservice:
+    image: temperature-service:latest
+    hostname: temperature-service
+    container_name: temperature-service
+    build:
+      context: temperatureservice/
+      dockerfile: Dockerfile
+    ports:
+      - "8300:80"
+    networks:
+      - sensor-cloud
+  messagequeue:
+    image: rabbitmq:3-management
+    hostname: rabbitmq-server
+    container_name: rabbitmq-server
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_ERLANG_COOKIE: "FGHZUTZWEQSDVSVQWET"
+      RABBITMQ_DEFAULT_USER: "rabbitmq"
+      RABBITMQ_DEFAULT_PASS: "rabbitmq"
+      RABBITMQ_DEFAULT_VHOST: "/"
 
 networks:
   sensor-cloud:
