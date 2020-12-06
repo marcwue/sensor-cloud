@@ -4,7 +4,7 @@
 FROM gradle:6.7.1-jdk15 AS build
 COPY --chown=gradle:gradle . /home/gradle
 WORKDIR /home/gradle
-RUN gradle build --no-daemon
+RUN gradle build
 
 #
 # Package stage
