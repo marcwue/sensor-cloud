@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  discovery:
+    container_name: discovery-server
+    build:
+      context: discoveryserver/
+      dockerfile: Dockerfile
+    image: discovery-server:latest
+    ports:
+      - "8761:8761"
+    networks:
+      - sensor-cloud
+
+networks:
+  sensor-cloud:
+    external: true
