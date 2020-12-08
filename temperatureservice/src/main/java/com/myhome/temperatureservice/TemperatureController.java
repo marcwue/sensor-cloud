@@ -1,16 +1,22 @@
 package com.myhome.temperatureservice;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class TemperatureController{
+public class TemperatureController {
+
+    @Autowired
+    private TemperatureComponent temperatureComponent;
 
     @GetMapping(path = "/temperature/{date}")
-    public int getTemperature(@PathVariable("date") String date){
+    public int getTemperature(@PathVariable("date") String date) {
         return 42;
+    }
+
+    @PutMapping(path = "/temperature/{temperature}")
+    public void putTemperature(@PathVariable("temperature") String temperature) {
+        temperatureComponent.putTemperature(temperature);
     }
 
 }
