@@ -4,14 +4,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
 
-public class Temperature implements Serializable {
+public class TemperatureModel implements Serializable {
 
     @JsonProperty("@id")
     public int id;
     @JsonProperty("celsius")
     public String celsius;
 
-    public Temperature() {
+    public TemperatureModel() {
     }
 
     public int getId() {
