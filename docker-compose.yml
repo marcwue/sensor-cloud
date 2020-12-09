@@ -47,6 +47,17 @@ services:
       RABBITMQ_DEFAULT_VHOST: "/"
     networks:
       - sensor-cloud
+  dbservice:
+    image: db-service:latest
+    hostname: db-service
+    container_name: db-service
+    build:
+      context: dbservice/
+      dockerfile: Dockerfile
+    ports:
+      - "8400:80"
+    networks:
+      - sensor-cloud
 
 networks:
   sensor-cloud:
