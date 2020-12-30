@@ -15,8 +15,9 @@ public class TemperatureComponent {
     private RabbitTemplate rabbitTemplate;
 
     public void putTemperature(final String temperature) {
-        final Temperature json = new Temperature(temperature);
-        final String routingKey = "foo.bar." + System.currentTimeMillis();
+        final long currentTimeMillis = System.currentTimeMillis();
+        final Temperature json = new Temperature(temperature, currentTimeMillis);
+        final String routingKey = "foo.bar." + currentTimeMillis;
         rabbitTemplate.convertAndSend(topicExchange, routingKey, json);
     }
 

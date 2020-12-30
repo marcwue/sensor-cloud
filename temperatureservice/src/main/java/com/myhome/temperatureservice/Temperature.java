@@ -11,16 +11,18 @@ import java.io.Serializable;
 public class Temperature implements Serializable {
 
     private String celsius;
+    private long currentTimeMillis;
 
-    public Temperature(String celsius) {
+    public Temperature(String celsius, long currentTimeMillis) {
         this.celsius = celsius;
+        this.currentTimeMillis = currentTimeMillis;
     }
 
     public String getCelsius() {
         return celsius;
     }
 
-    public void setCelsius(String celsius) {
-        this.celsius = celsius;
+    public long getCurrentTimeMillis() {
+        return currentTimeMillis;
     }
 }

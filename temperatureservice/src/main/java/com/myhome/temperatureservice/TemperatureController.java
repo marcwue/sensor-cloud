@@ -14,9 +14,9 @@ public class TemperatureController {
         return 42;
     }
 
-    @PutMapping(path = "/temperature/{temperature}")
-    public void putTemperature(@PathVariable("temperature") String temperature) {
-        temperatureComponent.putTemperature(temperature);
+    @PutMapping(path = "/temperature/{celsius}")
+    public void putTemperature(@PathVariable("celsius") String celsius) {
+        temperatureComponent.putTemperature(celsius);
     }
 
 }
