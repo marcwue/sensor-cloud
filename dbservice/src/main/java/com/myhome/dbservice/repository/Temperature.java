@@ -1,24 +1,39 @@
 package com.myhome.dbservice.repository;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Date;
+
+@Document
 public class Temperature {
 
     @Id
     public String id;
 
-    public String celsius;
+    public Double celsius;
+    @Indexed
+    public Date date;
 
     public Temperature() {
     }
 
-    public Temperature(String celsius) {
+    public Temperature(Double celsius, Date date) {
         this.celsius = celsius;
+        this.date = date;
     }
 
-    public Temperature(String id, String celsius) {
-        this.id = id;
-        this.celsius = celsius;
+    public String getId() {
+        return id;
+    }
+
+    public Double getCelsius() {
+        return celsius;
+    }
+
+    public Date getDate() {
+        return date;
     }
 
     @Override

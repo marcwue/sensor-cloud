@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class DbConfiguration {
+public class QueueConfiguration {
 
     @Value("${temperature.rabbitmq.queue}")
     String queueName;
@@ -26,7 +26,7 @@ public class DbConfiguration {
     }
 
     @Bean
-    TopicExchange exchange() {
+    TopicExchange topicExchange() {
         return new TopicExchange(topicExchange);
     }
 

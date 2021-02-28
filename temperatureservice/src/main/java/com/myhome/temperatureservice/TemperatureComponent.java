@@ -5,20 +5,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+
 @Component
 public class TemperatureComponent {
 
     @Value("${temperature.rabbitmq.topicExchange}")
-    String topicExchange;
+    private String topicExchange;
+    @Value("${temperature.rabbitmq.routingKey}")
+    private String routingKey; // todo
 
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
-    public void putTemperature(final String temperature) {
-        final long currentTimeMillis = System.currentTimeMillis();
-        final Temperature json = new Temperature(temperature, currentTimeMillis);
-        final String routingKey = "foo.bar." + currentTimeMillis;
+    public TemperatureViewModel postTemperature(final TemperatureModel temperatureModel) {
+        final Date currentDate = new Date();
+        final TemperatureQueueModel json = new TemperatureQueueModel(temperatureModel.getCelsius(), currentDate);
+        final String routingKey = "foo.bar." + currentDate;
         rabbitTemplate.convertAndSend(topicExchange, routingKey, json);
+        return new TemperatureViewModel(temperatureModel.getCelsius(), currentDate);
     }
 
 }

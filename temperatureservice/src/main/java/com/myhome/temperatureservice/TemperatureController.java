@@ -1,6 +1,7 @@
 package com.myhome.temperatureservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,9 +15,11 @@ public class TemperatureController {
         return 42;
     }
 
-    @PutMapping(path = "/temperature/{celsius}")
-    public void putTemperature(@PathVariable("celsius") String celsius) {
-        temperatureComponent.putTemperature(celsius);
+    @PostMapping(path = "/temperature",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public TemperatureViewModel postTemperature(@RequestBody TemperatureModel temperatureModel) {
+        return temperatureComponent.postTemperature(temperatureModel);
     }
 
 }
