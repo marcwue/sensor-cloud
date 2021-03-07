@@ -1,4 +1,4 @@
-package com.myhome.temperatureservice;
+package com.myhome.dbservice;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -6,7 +6,7 @@ import java.util.Date;
 public class TemperatureViewModel implements Serializable {
 
     private final double celsius;
-    private final Date date; // todo localdatetime
+    private final Date date;
 
     public TemperatureViewModel(double celsius, Date date) {
         this.celsius = celsius;
