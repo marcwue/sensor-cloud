@@ -25,7 +25,7 @@ public class SensorServiceController {
     @GetMapping(path = "/temperature")
     public TemperatureViewModels getTemperature(@RequestParam @DateTimeFormat(pattern = "dd.MM.yyyy") LocalDate day) {
         GetTemperatureProxyModel getTemperatureProxyModel = new GetTemperatureProxyModel(day);
-
+        System.out.println(day.getChronology());
         return temperatureServiceProxy.getTemperature(day);
     }
 

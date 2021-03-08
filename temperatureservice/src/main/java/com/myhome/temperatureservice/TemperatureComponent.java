@@ -47,7 +47,7 @@ public class TemperatureComponent {
     }
 
     public TemperatureViewModels getTemperature(LocalDate day) {
-        System.out.println("temperatureService");
+        System.out.println("temperatureService " + day);
         return dbServiceProxy.getTemperature(day);
     }
 }
