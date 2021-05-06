@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <TemperatureTable msg="asdf"/>
+    <SensorTable/>
   </div>
 </template>
 
 <script>
-import TemperatureTable from './components/TemperatureTable.vue'
+import SensorTable from './components/SensorTable.vue'
 
 export default {
   name: 'App',
   components: {
-    TemperatureTable
+    SensorTable
   }
 }
 </script>
@@ -20,8 +20,5 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: left;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

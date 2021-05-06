@@ -1,10 +1,6 @@
 <template>
   <div class="hello">
-    <ul>
-      <li v-for="(temperature, index) in temperatures" :key="temperature.date">
-        {{ index + 1 }}. {{ temperature.date }}: {{ temperature.celsius }}
-      </li>
-    </ul>
+    <b-table striped hover :items="temperatures"></b-table>
   </div>
 </template>
 
@@ -12,7 +8,7 @@
 import axios from 'axios';
 
 export default {
-  name: 'TemperatureTable',
+  name: 'SensorTable',
   props: {
     msg: String
   },
@@ -22,12 +18,13 @@ export default {
     }
   },
   created() {
-    axios.get('http://localhost:8200/temperature?day=06.03.2021')
+    let today = new Date().toISOString().slice(0, 10)
+    axios.get('http://sensor-service:8200/temperature?day=' + today)
     .then(response => {
       this.temperatures = response.data.temperatureViewModels
     })
     .catch(e => {
-      this.errors.push(e)
+      console.log(e)
     })
   }
 }

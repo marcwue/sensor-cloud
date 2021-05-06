@@ -8,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 @RestController
 public class SensorServiceController {
@@ -23,9 +24,9 @@ public class SensorServiceController {
     }
 
     @GetMapping(path = "/temperature")
-    public TemperatureViewModels getTemperature(@RequestParam @DateTimeFormat(pattern = "dd.MM.yyyy") LocalDate day) {
-        GetTemperatureProxyModel getTemperatureProxyModel = new GetTemperatureProxyModel(day);
-        System.out.println(day.getChronology());
+    public TemperatureViewModels getTemperature(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate day) {
+        // GetTemperatureProxyModel getTemperatureProxyModel = new GetTemperatureProxyModel(day);
+        System.out.println(day);
         return temperatureServiceProxy.getTemperature(day);
     }
 

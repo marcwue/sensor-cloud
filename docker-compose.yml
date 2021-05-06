@@ -85,5 +85,16 @@ services:
       ME_CONFIG_MONGODB_ADMINPASSWORD: myPass123
     networks:
       - sensor-cloud
+  vue-frontend:
+    image: vue-frontend:latest
+    hostname: vue-frontend
+    container_name: vue-frontend
+    build:
+      context: frontend/
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    networks:
+      - sensor-cloud
 networks:
   sensor-cloud:

@@ -1,6 +1,7 @@
 package com.myhome.temperatureservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +22,7 @@ public class TemperatureController {
 
     @GetMapping(path = "/temperature",
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public TemperatureViewModels getTemperature(@RequestParam LocalDate day) {
+    public TemperatureViewModels getTemperature(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate day) {
         return temperatureComponent.getTemperature(day);
     }
 

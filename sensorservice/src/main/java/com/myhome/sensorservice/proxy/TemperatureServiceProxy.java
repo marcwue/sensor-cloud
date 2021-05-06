@@ -2,6 +2,7 @@ package com.myhome.sensorservice.proxy;
 
 import com.myhome.sensorservice.TemperatureViewModels;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +22,7 @@ public interface TemperatureServiceProxy {
 
     @GetMapping(path = "/temperature",
             produces = MediaType.APPLICATION_JSON_VALUE)
-    TemperatureViewModels getTemperature(@RequestParam LocalDate day);
+    TemperatureViewModels getTemperature(@RequestParam
+                                         @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate day);
 
 }
