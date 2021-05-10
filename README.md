@@ -1,18 +1,9 @@
 # sensor-cloud
 
-Discovery Server
-
 ## Architecture
 
-Sensor-Service
-    |
-Temp-Service (scalable with Feign)
-    |           |
-RabbitMQ        |
-    |           |
-DB-Service
-    |
-MongoDB
+Every service runs in its own docker container 
 
-## Configuration
-...
+Discovery Server
+
+Sensor-Service <-> Temp-Service (scalable with Feign) <-> RabbitMQ <-> DB-Service <-> MongoDB

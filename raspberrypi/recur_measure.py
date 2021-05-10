@@ -1,11 +1,16 @@
-import time
-from adafruit_DHT import measure
+#!/usr/bin/python
 
-def recur():
-  humidity, temperature = measure(2302, 4)
-  # send data
-  time.sleep(60)
+import time
+from adafruit_DHT import measure_send
+
+
+def recur_measure():
+    print('loop start')
+    humidity, temperature = measure_send('2302', 4)
+    time.sleep(60)
+
 
 if __name__ == "__main__":
-  while True:
-    recur()
+    print('start program')
+    while True:
+        recur_measure()

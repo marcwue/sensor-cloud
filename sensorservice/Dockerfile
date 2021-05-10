@@ -9,7 +9,7 @@ RUN gradle build
 #
 # Package stage
 #
-FROM openjdk:15-jdk-alpine
+FROM arm32v7/adoptopenjdk:15-jdk-hotspot-focal
 COPY --from=build /home/gradle/build/libs/sensorservice-0.0.1-SNAPSHOT.jar /usr/local/lib/sensorservice-0.0.1-SNAPSHOT.jar
 EXPOSE 8200
 ENTRYPOINT ["java", "-jar", "/usr/local/lib/sensorservice-0.0.1-SNAPSHOT.jar"]
