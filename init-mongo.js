@@ -1,12 +1,5 @@
-db.createUser(
+db.addUser(
   {
-    user: "dbUser",
-    pwd: "asdf1234",
-    roles: [
-      {
-        role: "readWrite",
-        db: "sensor-data"
-      }
-    ]
-  }
-)
+    user: "root",
+    pwd: "myPass123",
+    roles: [ "userAdminAnyDatabase","dbAdminAnyDatabase","readWriteAnyDatabase"]})
