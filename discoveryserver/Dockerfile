@@ -9,7 +9,7 @@ RUN gradle build
 #
 # Package stage
 #
-FROM openjdk:15-jdk-alpine
+FROM arm32v7/adoptopenjdk:15.0.2_7-jre-hotspot
 COPY --from=build /home/gradle/build/libs/discoveryserver-0.0.1-SNAPSHOT.jar /usr/local/lib/discoveryserver-0.0.1-SNAPSHOT.jar
 EXPOSE 8761
 ENTRYPOINT ["java", "-jar", "/usr/local/lib/discoveryserver-0.0.1-SNAPSHOT.jar"]
